@@ -6,14 +6,14 @@ Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
 Summary(tr):	GNU geliþtirme araçlarý - PPC64 gcc
 Name:		crossppc64-gcc
 Version:	4.0.1
-%define		_snap	20050609
-Release:	0.%{_snap}.1
+#define		_snap	20050609
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-#Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.0-%{_snap}/gcc-4.0-%{_snap}.tar.bz2
-# Source0-md5:	3ba660302e1c4c09c878dcab822c9e3c
+Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
+# Source0-md5:	947416e825a877a0d69489be1be43be1
+#Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.0-%{_snap}/gcc-4.0-%{_snap}.tar.bz2
 %define		_llh_ver	2.6.11.2
 Source1:	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-%{_llh_ver}.tar.bz2
 # Source1-md5:	2d21d8e7ff641da74272b114c786464e
@@ -69,8 +69,8 @@ PPC64.
 Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla PPC64.
 
 %prep
-#setup -q -n gcc-%{version} -a1 -a2 -a3
-%setup -q -n gcc-4.0-%{_snap} -a1 -a2 -a3
+%setup -q -n gcc-%{version} -a1 -a2 -a3
+#setup -q -n gcc-4.0-%{_snap} -a1 -a2 -a3
 mv linuxthreads* glibc-%{_glibc_ver}
 %patch0 -p1
 
