@@ -6,14 +6,14 @@ Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
 Summary(tr):	GNU geliþtirme araçlarý - PPC64 gcc
 Name:		crossppc64-gcc
 Version:	4.0.2
-%define		_snap	20050917
-Release:	0.rc2.1
+#define		_snap	20050917
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-#Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-Source0:	ftp://gcc.gnu.org/pub/gcc/prerelease-4.0.2-20050917/gcc-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	324eab0cc7b406ea96d3d0ff6ccb4618
+Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
+# Source0-md5:	a659b8388cac9db2b13e056e574ceeb0
+#Source0:	ftp://gcc.gnu.org/pub/gcc/prerelease-4.0.2-20050917/gcc-%{version}-%{_snap}.tar.bz2
 #Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.0-%{_snap}/gcc-4.0-%{_snap}.tar.bz2
 %define		_llh_ver	2.6.12.0
 Source1:	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-%{_llh_ver}.tar.bz2
