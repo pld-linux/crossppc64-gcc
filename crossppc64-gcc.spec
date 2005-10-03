@@ -70,8 +70,8 @@ PPC64.
 Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla PPC64.
 
 %prep
-#setup -q -n gcc-%{version} -a1 -a2 -a3
-%setup -q -n gcc-%{version}-%{_snap} -a1 -a2 -a3
+%setup -q -n gcc-%{version} -a1 -a2 -a3
+#setup -q -n gcc-%{version}-%{_snap} -a1 -a2 -a3
 #setup -q -n gcc-4.0-%{_snap} -a1 -a2 -a3
 mv linuxthreads* glibc-%{_glibc_ver}
 %patch0 -p1
