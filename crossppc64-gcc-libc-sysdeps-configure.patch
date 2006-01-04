@@ -1,5 +1,5 @@
---- a/glibc-2.3.5/sysdeps/powerpc/configure	2004-05-28 23:18:10.000000000 +0200
-+++ b/glibc-2.3.5/sysdeps/powerpc/configure	2004-11-17 21:13:01.151745976 +0100
+--- a/glibc-2.3.6/sysdeps/powerpc/configure	2004-05-28 23:18:10.000000000 +0200
++++ b/glibc-2.3.6/sysdeps/powerpc/configure	2004-11-17 21:13:01.151745976 +0100
 @@ -11,7 +11,7 @@
  	.machine "altivec"
  	blr
