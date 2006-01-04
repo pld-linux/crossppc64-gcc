@@ -5,21 +5,23 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla PPC64 - gcc
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
 Summary(tr):	GNU geliþtirme araçlarý - PPC64 gcc
 Name:		crossppc64-gcc
-Version:	4.0.2
-Release:	1
+Version:	4.1.0
+%define		_snap	20051230
+Release:	0.%{_snap}.1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-# Source0-md5:	a659b8388cac9db2b13e056e574ceeb0
+#Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
+Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.1-%{_snap}/gcc-4.1-%{_snap}.tar.bz2
+# Source0-md5:	f76dfdb7b6a3148ca94ebab429346729
 %define		_llh_ver	2.6.12.0
 Source1:	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-%{_llh_ver}.tar.bz2
 # Source1-md5:	eae2f562afe224ad50f65a6acfb4252c
-%define		_glibc_ver	2.3.5
+%define		_glibc_ver	2.3.6
 Source2:	ftp://sources.redhat.com/pub/glibc/releases/glibc-%{_glibc_ver}.tar.bz2
-# Source2-md5:	93d9c51850e0513aa4846ac0ddcef639
+# Source2-md5:	bfdce99f82d6dbcb64b7f11c05d6bc96
 Source3:	ftp://sources.redhat.com/pub/glibc/releases/glibc-linuxthreads-%{_glibc_ver}.tar.bz2
-# Source3-md5:	77011b0898393c56b799bc011a0f37bf
+# Source3-md5:	d4eeda37472666a15cc1f407e9c987a9
 Patch0:		%{name}-libc-sysdeps-configure.patch
 URL:		http://gcc.gnu.org/
 BuildRequires:	autoconf
@@ -67,7 +69,8 @@ PPC64.
 Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla PPC64.
 
 %prep
-%setup -q -n gcc-%{version} -a1 -a2 -a3
+#setup -q -n gcc-%{version} -a1 -a2 -a3
+%setup -q -n gcc-4.1-%{_snap} -a1 -a2 -a3
 mv linuxthreads* glibc-%{_glibc_ver}
 %patch0 -p1
 
@@ -124,7 +127,7 @@ TEXCONFIG=false \
 	--with-demangler-in-ld \
 	--with-system-zlib \
 	--enable-multilib \
-	--with-sysroot=$FAKE_ROOT \
+	--with-headers=$FAKE_ROOT%{_includedir} \
 	--without-x \
 	--target=%{target} \
 	--host=%{_target_platform} \
