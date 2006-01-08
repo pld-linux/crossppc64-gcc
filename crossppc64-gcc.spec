@@ -6,23 +6,16 @@ Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
 Summary(tr):	GNU geliþtirme araçlarý - PPC64 gcc
 Name:		crossppc64-gcc
 Version:	4.1.0
-%define		_snap	20051230
+%define		_snap	20060106
 Release:	0.%{_snap}.1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 #Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
 Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.1-%{_snap}/gcc-4.1-%{_snap}.tar.bz2
-# Source0-md5:	f76dfdb7b6a3148ca94ebab429346729
-%define		_llh_ver	2.6.12.0
-Source1:	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-%{_llh_ver}.tar.bz2
-# Source1-md5:	eae2f562afe224ad50f65a6acfb4252c
-%define		_glibc_ver	2.3.6
-Source2:	ftp://sources.redhat.com/pub/glibc/releases/glibc-%{_glibc_ver}.tar.bz2
-# Source2-md5:	bfdce99f82d6dbcb64b7f11c05d6bc96
-Source3:	ftp://sources.redhat.com/pub/glibc/releases/glibc-linuxthreads-%{_glibc_ver}.tar.bz2
-# Source3-md5:	d4eeda37472666a15cc1f407e9c987a9
-Patch0:		%{name}-libc-sysdeps-configure.patch
+# Source0-md5:	de7fdd94d3bead292fda8eeeab7454ce
+Patch0:		gcc-pr25672.patch
+Patch1:		gcc-pr25715.patch
 URL:		http://gcc.gnu.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -69,38 +62,12 @@ PPC64.
 Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla PPC64.
 
 %prep
-#setup -q -n gcc-%{version} -a1 -a2 -a3
-%setup -q -n gcc-4.1-%{_snap} -a1 -a2 -a3
-mv linuxthreads* glibc-%{_glibc_ver}
+#setup -q -n gcc-%{version}
+%setup -q -n gcc-4.1-%{_snap}
 %patch0 -p1
+%patch1 -p1
 
 %build
-FAKE_ROOT=$PWD/fake-root
-
-rm -rf $FAKE_ROOT && install -d $FAKE_ROOT%{_includedir}
-cp -r linux-libc-headers-%{_llh_ver}/include/{asm-ppc64,linux} $FAKE_ROOT%{_includedir}
-ln -s asm-ppc64 $FAKE_ROOT%{_includedir}/asm
-
-cd glibc-%{_glibc_ver}
-cp -f /usr/share/automake/config.* scripts
-rm -rf builddir && install -d builddir && cd builddir
-../configure \
---prefix=$FAKE_ROOT%{_prefix} \
-	--build=%{_target_platform} \
-	--host=%{target} \
-	--disable-nls \
-	--enable-add-ons=linuxthreads \
-	--with-headers=$FAKE_ROOT%{_includedir} \
-	--disable-sanity-checks \
-	--enable-hacker-mode
-
-%{__make} sysdeps/gnu/errlist.c
-%{__make} install-headers
-
-install bits/stdio_lim.h $FAKE_ROOT%{_includedir}/bits
-touch $FAKE_ROOT%{_includedir}/gnu/stubs.h
-cd ../..
-
 cp -f /usr/share/automake/config.* .
 rm -rf obj-%{target}
 install -d obj-%{target}
@@ -118,6 +85,7 @@ TEXCONFIG=false \
 	--libexecdir=%{_libdir} \
 	--disable-shared \
 	--disable-threads \
+	--without-headers \
 	--enable-languages="c,c++" \
 	--enable-c99 \
 	--enable-long-long \
@@ -127,7 +95,6 @@ TEXCONFIG=false \
 	--with-demangler-in-ld \
 	--with-system-zlib \
 	--enable-multilib \
-	--with-headers=$FAKE_ROOT%{_includedir} \
 	--without-x \
 	--target=%{target} \
 	--host=%{_target_platform} \
