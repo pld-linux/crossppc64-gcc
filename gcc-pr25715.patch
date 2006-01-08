@@ -1,0 +1,19 @@
+In file included from ../../gcc/libgcc2.c:43:
+../../gcc/libgcc2.h:214:3: error: #error "expand the table"
+../../gcc/libgcc2.c: In function '__mulhi3':
+../../gcc/libgcc2.c:514: error: 'BITS_PER_UNIT' undeclared (first use in this function)
+../../gcc/libgcc2.c:514: error: (Each undeclared identifier is reported only once
+../../gcc/libgcc2.c:514: error: for each function it appears in.)
+make[2]: *** [libgcc/./_muldi3.o] Error 1
+
+--- gcc-4.1-20060106/gcc/mkconfig.sh.orig	2005-06-25 04:02:01.000000000 +0200
++++ gcc-4.1-20060106/gcc/mkconfig.sh	2006-01-08 19:41:26.003429750 +0100
+@@ -64,7 +64,7 @@
+ 	;;
+     esac
+     if [ $# -ge 1 ]; then
+-	echo '#ifdef IN_GCC' >> ${output}T
++	echo '#if defined(IN_GCC) || defined(IN_LIBGCC2)' >> ${output}T
+ 	for file in "$@"; do
+ 	    echo "# include \"$file\"" >> ${output}T
+ 	done
