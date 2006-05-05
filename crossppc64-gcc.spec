@@ -15,7 +15,6 @@ Group:		Development/Languages
 Source0:	gcc-4.1-%{_snap}.tar.bz2
 # Source0-md5:	475abff96a6fb1f80ef69dded2f9ed2d
 Patch0:		gcc-pr25672.patch
-Patch1:		gcc-pr25715.patch
 URL:		http://gcc.gnu.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -65,7 +64,6 @@ Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla PPC64.
 #setup -q -n gcc-%{version}
 %setup -q -n gcc-4_1-branch
 %patch0 -p1
-%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.* .
