@@ -5,15 +5,15 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla PPC64 - gcc
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
 Summary(tr):	GNU geliþtirme araçlarý - PPC64 gcc
 Name:		crossppc64-gcc
-Version:	4.1.0
-%define		_snap	20060106
+Version:	4.1.1
+%define		_snap	20060504r113515
 Release:	0.%{_snap}.1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 #Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-Source0:	ftp://gcc.gnu.org/pub/gcc/snapshots/4.1-%{_snap}/gcc-4.1-%{_snap}.tar.bz2
-# Source0-md5:	de7fdd94d3bead292fda8eeeab7454ce
+Source0:	gcc-4.1-%{_snap}.tar.bz2
+# Source0-md5:	475abff96a6fb1f80ef69dded2f9ed2d
 Patch0:		gcc-pr25672.patch
 Patch1:		gcc-pr25715.patch
 URL:		http://gcc.gnu.org/
@@ -63,7 +63,7 @@ Ten pakiet dodaje obs³ugê C++ do kompilatora gcc dla PPC64.
 
 %prep
 #setup -q -n gcc-%{version}
-%setup -q -n gcc-4.1-%{_snap}
+%setup -q -n gcc-4_1-branch
 %patch0 -p1
 %patch1 -p1
 
