@@ -1,9 +1,9 @@
 Summary:	Cross PPC64 GNU binary utility development utilities - gcc
-Summary(es.UTF-8):   Utilitarios para desarrollo de binarios de la GNU - PPC64 gcc
-Summary(fr.UTF-8):   Utilitaires de développement binaire de GNU - PPC64 gcc
-Summary(pl.UTF-8):   Skrośne narzędzia programistyczne GNU dla PPC64 - gcc
-Summary(pt_BR.UTF-8):   Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
-Summary(tr.UTF-8):   GNU geliştirme araçları - PPC64 gcc
+Summary(es.UTF-8):	Utilitarios para desarrollo de binarios de la GNU - PPC64 gcc
+Summary(fr.UTF-8):	Utilitaires de développement binaire de GNU - PPC64 gcc
+Summary(pl.UTF-8):	Skrośne narzędzia programistyczne GNU dla PPC64 - gcc
+Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - PPC64 gcc
+Summary(tr.UTF-8):	GNU geliştirme araçları - PPC64 gcc
 Name:		crossppc64-gcc
 Version:	4.1.1
 %define		_snap	20060504r113515
@@ -49,7 +49,7 @@ maszynach binariów do uruchamiania na Linuksie PPC64.
 
 %package c++
 Summary:	C++ support for crossppc64-gcc
-Summary(pl.UTF-8):   Obsługa C++ dla crossppc64-gcc
+Summary(pl.UTF-8):	Obsługa C++ dla crossppc64-gcc
 Group:		Development/Languages
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
