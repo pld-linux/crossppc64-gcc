@@ -63,7 +63,7 @@ Ten pakiet dodaje obsługę C++ do kompilatora gcc dla PPC64.
 %prep
 #setup -q -n gcc-%{version}
 %setup -q -n gcc-4_1-branch
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 cp -f /usr/share/automake/config.* .
